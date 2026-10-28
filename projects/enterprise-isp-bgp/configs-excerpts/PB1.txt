@@ -1,0 +1,43 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — PB1
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+mpls label range 11100 11199
+!
+interface Loopback0
+ ip address 10.255.1.11 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address 10.0.2.6 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ ip address 10.0.2.9 255.255.255.252
+ negotiation auto
+ mpls ip
+ no mop enabled
+ no mop sysid
+!
+router ospf 200
+ router-id 111.111.111.111
+ auto-cost reference-bandwidth 100000
+ passive-interface Loopback0
+ network 0.0.0.0 255.255.255.255 area 0
+ mpls ldp sync
+!
+router bgp 65010
+ bgp router-id 10.255.1.11
+ bgp log-neighbor-changes
+ neighbor 10.255.1.1 remote-as 65010
+ neighbor 10.255.1.1 update-source Loopback0
+ address-family ipv4
+  neighbor 10.255.1.1 activate
+ exit-address-family
+ address-family vpnv4
+  neighbor 10.255.1.1 activate
+  neighbor 10.255.1.1 send-community extended
+ exit-address-family
+!
+mpls ldp router-id Loopback0

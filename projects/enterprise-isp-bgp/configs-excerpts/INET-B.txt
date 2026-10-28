@@ -1,0 +1,8 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — INET-B
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface eth0
+ ip address 10.0.2.14/30
+!
+interface lo
+ ip address 10.255.2.2/32

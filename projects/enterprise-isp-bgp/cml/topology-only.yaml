@@ -1,0 +1,792 @@
+lab:
+  title: Enterprise ISP BGP — 24-node topology (configuration-free public edition)
+  version: 0.3.0
+  description: Sanitized topology-only variant of an intermediate lab snapshot. Device
+    configurations intentionally excluded.
+annotations: []
+nodes:
+- id: n0
+  label: RR1
+  node_definition: iosxrv9000
+  x: -260
+  y: -120
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: MgmtEth0/RP0/CPU0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: donotuse1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: donotuse2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/0/0/0
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet0/0/0/1
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i6
+    label: GigabitEthernet0/0/0/2
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i7
+    label: GigabitEthernet0/0/0/3
+    mac_address: null
+    type: physical
+    slot: 6
+  configuration: []
+- id: n1
+  label: RR2
+  node_definition: iosxrv9000
+  x: -260
+  y: 120
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: MgmtEth0/RP0/CPU0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: donotuse1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: donotuse2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/0/0/0
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet0/0/0/1
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i6
+    label: GigabitEthernet0/0/0/2
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i7
+    label: GigabitEthernet0/0/0/3
+    mac_address: null
+    type: physical
+    slot: 6
+  configuration: []
+- id: n2
+  label: P1
+  node_definition: csr1000v
+  x: -20
+  y: -120
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet5
+    mac_address: null
+    type: physical
+    slot: 4
+  configuration: []
+- id: n3
+  label: P2
+  node_definition: csr1000v
+  x: -20
+  y: 120
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet5
+    mac_address: null
+    type: physical
+    slot: 4
+  configuration: []
+- id: n4
+  label: PE1
+  node_definition: csr1000v
+  x: 240
+  y: -240
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  configuration: []
+- id: n5
+  label: PE2
+  node_definition: csr1000v
+  x: 240
+  y: -80
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  configuration: []
+- id: n6
+  label: PE3
+  node_definition: csr1000v
+  x: 240
+  y: 80
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  configuration: []
+- id: n7
+  label: PE4
+  node_definition: csr1000v
+  x: 240
+  y: 240
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  configuration: []
+- id: n8
+  label: ASBR-A
+  node_definition: csr1000v
+  x: 500
+  y: 80
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  configuration: []
+- id: n9
+  label: INET-A
+  node_definition: frr
+  x: 760
+  y: 40
+  interfaces:
+  - id: i0
+    label: eth0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n10
+  label: PB2
+  node_definition: csr1000v
+  x: 980
+  y: 220
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet5
+    mac_address: null
+    type: physical
+    slot: 4
+  configuration: []
+- id: n11
+  label: CE-A1
+  node_definition: iosv
+  x: 520
+  y: -260
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n12
+  label: CE-B1
+  node_definition: iosv
+  x: 520
+  y: -160
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n13
+  label: CE-B2
+  node_definition: iosv
+  x: 520
+  y: -20
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n14
+  label: CE-C1
+  node_definition: iosv
+  x: 720
+  y: 360
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n15
+  label: CE-D1
+  node_definition: iosv
+  x: 520
+  y: 180
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n16
+  label: CE-D2
+  node_definition: iosv
+  x: 520
+  y: 320
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n17
+  label: CE-E1
+  node_definition: iosv
+  x: 520
+  y: 420
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n18
+  label: PB1
+  node_definition: csr1000v
+  x: 980
+  y: 80
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n19
+  label: INET-B
+  node_definition: frr
+  x: 1240
+  y: 80
+  interfaces:
+  - id: i0
+    label: eth0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n20
+  label: RS1
+  node_definition: frr
+  x: 760
+  y: -120
+  interfaces:
+  - id: i0
+    label: eth0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i1
+    label: eth1
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n21
+  label: INJ1
+  node_definition: frr
+  x: 980
+  y: -120
+  interfaces:
+  - id: i0
+    label: eth0
+    mac_address: null
+    type: physical
+    slot: 0
+  configuration: []
+- id: n22
+  label: CE-C2
+  node_definition: iosv
+  x: 1240
+  y: 440
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  configuration: []
+- id: n23
+  label: RRB1
+  node_definition: iosv
+  x: 800
+  y: 240
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  configuration: []
+links:
+- id: l0
+  n1: n2
+  i1: i3
+  n2: n3
+  i2: i3
+  label: P1-GigabitEthernet3<->P2-GigabitEthernet3
+  conditioning: {}
+- id: l1
+  n1: n2
+  i1: i4
+  n2: n4
+  i2: i1
+  label: P1-GigabitEthernet4<->PE1-GigabitEthernet1
+  conditioning: {}
+- id: l2
+  n1: n2
+  i1: i5
+  n2: n5
+  i2: i1
+  label: P1-GigabitEthernet5<->PE2-GigabitEthernet1
+  conditioning: {}
+- id: l3
+  n1: n3
+  i1: i4
+  n2: n6
+  i2: i1
+  label: P2-GigabitEthernet4<->PE3-GigabitEthernet1
+  conditioning: {}
+- id: l4
+  n1: n3
+  i1: i5
+  n2: n7
+  i2: i1
+  label: P2-GigabitEthernet5<->PE4-GigabitEthernet1
+  conditioning: {}
+- id: l5
+  n1: n6
+  i1: i2
+  n2: n8
+  i2: i1
+  label: PE3-GigabitEthernet2<->ASBR-A-GigabitEthernet1
+  conditioning: {}
+- id: l6
+  n1: n8
+  i1: i2
+  n2: n9
+  i2: i0
+  label: ASBR-A-GigabitEthernet2<->INET-A-eth0
+  conditioning: {}
+- id: l7
+  n1: n8
+  i1: i3
+  n2: n10
+  i2: i1
+  label: ASBR-A-GigabitEthernet3<->PB2-GigabitEthernet1
+  conditioning: {}
+- id: l8
+  n1: n4
+  i1: i2
+  n2: n11
+  i2: i1
+  label: PE1-GigabitEthernet2<->CE-A1-GigabitEthernet0/0
+  conditioning: {}
+- id: l9
+  n1: n4
+  i1: i3
+  n2: n12
+  i2: i1
+  label: PE1-GigabitEthernet3<->CE-B1-GigabitEthernet0/0
+  conditioning: {}
+- id: l10
+  n1: n5
+  i1: i2
+  n2: n13
+  i2: i1
+  label: PE2-GigabitEthernet2<->CE-B2-GigabitEthernet0/0
+  conditioning: {}
+- id: l11
+  n1: n12
+  i1: i2
+  n2: n13
+  i2: i2
+  label: CE-B1-GigabitEthernet0/1<->CE-B2-GigabitEthernet0/1
+  conditioning: {}
+- id: l12
+  n1: n6
+  i1: i3
+  n2: n14
+  i2: i1
+  label: PE3-GigabitEthernet3<->CE-C1-GigabitEthernet0/0
+  conditioning: {}
+- id: l13
+  n1: n5
+  i1: i3
+  n2: n15
+  i2: i1
+  label: PE2-GigabitEthernet3<->CE-D1-GigabitEthernet0/0
+  conditioning: {}
+- id: l14
+  n1: n7
+  i1: i2
+  n2: n16
+  i2: i1
+  label: PE4-GigabitEthernet2<->CE-D2-GigabitEthernet0/0
+  conditioning: {}
+- id: l15
+  n1: n7
+  i1: i3
+  n2: n17
+  i2: i1
+  label: PE4-GigabitEthernet3<->CE-E1-GigabitEthernet0/0
+  conditioning: {}
+- id: l16
+  n1: n18
+  i1: i2
+  n2: n10
+  i2: i3
+  label: PB1-GigabitEthernet2<->PB2-GigabitEthernet3
+  conditioning: {}
+- id: l17
+  n1: n10
+  i1: i4
+  n2: n19
+  i2: i0
+  label: PB2-GigabitEthernet4<->INET-B-eth0
+  conditioning: {}
+- id: l18
+  n1: n8
+  i1: i4
+  n2: n20
+  i2: i0
+  label: ASBR-A-GigabitEthernet4<->RS1-eth0
+  conditioning: {}
+- id: l19
+  n1: n20
+  i1: i1
+  n2: n21
+  i2: i0
+  label: RS1-eth1<->INJ1-eth0
+  conditioning: {}
+- id: l20
+  n1: n10
+  i1: i5
+  n2: n22
+  i2: i1
+  label: PB2-GigabitEthernet5<->CE-C2-GigabitEthernet0/0
+  conditioning: {}
+- id: l21
+  n1: n14
+  i1: i2
+  n2: n22
+  i2: i2
+  label: CE-C1-GigabitEthernet0/1<->CE-C2-GigabitEthernet0/1
+  conditioning: {}
+- id: l22
+  n1: n1
+  i1: i4
+  n2: n2
+  i2: i2
+  label: RR2-GigabitEthernet0/0/0/0<->P1-GigabitEthernet2
+  conditioning: {}
+- id: l23
+  n1: n1
+  i1: i5
+  n2: n3
+  i2: i2
+  label: RR2-GigabitEthernet0/0/0/1<->P2-GigabitEthernet2
+  conditioning: {}
+- id: l24
+  n1: n0
+  i1: i4
+  n2: n2
+  i2: i1
+  label: RR1-GigabitEthernet0/0/0/0<->P1-GigabitEthernet1
+  conditioning: {}
+- id: l25
+  n1: n0
+  i1: i5
+  n2: n3
+  i2: i1
+  label: RR1-GigabitEthernet0/0/0/1<->P2-GigabitEthernet1
+  conditioning: {}
+- id: l26
+  n1: n23
+  i1: i2
+  n2: n18
+  i2: i1
+  label: RRB1-GigabitEthernet0/1<->PB1-GigabitEthernet1
+  conditioning: {}
+- id: l27
+  n1: n23
+  i1: i3
+  n2: n10
+  i2: i2
+  label: RRB1-GigabitEthernet0/2<->PB2-GigabitEthernet2
+  conditioning: {}

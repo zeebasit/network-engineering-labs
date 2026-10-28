@@ -1,0 +1,62 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — RRB1
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface Loopback0
+ ip address 10.255.1.1 255.255.255.255
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description TO-PB1
+ ip address 10.0.2.5 255.255.255.252
+ ip ospf network point-to-point
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description TO-PB2
+ ip address 10.0.2.1 255.255.255.252
+ ip ospf network point-to-point
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 100
+ router-id 10.255.1.1
+ passive-interface Loopback0
+ network 10.0.2.0 0.0.0.3 area 0
+ network 10.0.2.4 0.0.0.3 area 0
+ network 10.255.1.1 0.0.0.0 area 0
+!
+router bgp 65010
+ bgp router-id 10.255.1.1
+ bgp log-neighbor-changes
+ neighbor 10.255.1.11 remote-as 65010
+ neighbor 10.255.1.11 update-source Loopback0
+ neighbor 10.255.1.12 remote-as 65010
+ neighbor 10.255.1.12 update-source Loopback0
+ address-family ipv4
+  neighbor 10.255.1.11 activate
+  neighbor 10.255.1.12 activate
+ exit-address-family
+ address-family vpnv4
+  neighbor 10.255.1.11 activate
+  neighbor 10.255.1.11 send-community extended
+  neighbor 10.255.1.11 route-reflector-client
+  neighbor 10.255.1.12 activate
+  neighbor 10.255.1.12 send-community extended
+  neighbor 10.255.1.12 route-reflector-client
+ exit-address-family

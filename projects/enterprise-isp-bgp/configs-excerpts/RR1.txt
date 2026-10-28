@@ -1,0 +1,58 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — RR1
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface Loopback0
+ ipv4 address 10.255.0.1 255.255.255.255
+!
+interface MgmtEth0/RP0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.0.0.1 255.255.255.252
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.0.5 255.255.255.252
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+router ospf 100
+ router-id 1.1.1.1
+ auto-cost reference-bandwidth 100000
+ area 0
+  interface Loopback0
+   passive enable
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+!
+router bgp 65000
+ bgp router-id 10.255.0.1
+ address-family ipv4 unicast
+ address-family vpnv4 unicast
+ neighbor-group RR1-CLIENTS
+  remote-as 65000
+  update-source Loopback0
+  address-family ipv4 unicast
+   route-reflector-client
+  address-family vpnv4 unicast
+   route-reflector-client
+ neighbor 10.255.0.2
+  remote-as 65000
+  update-source Loopback0
+  address-family ipv4 unicast
+  address-family vpnv4 unicast
+ neighbor 10.255.0.21
+  use neighbor-group RR1-CLIENTS
+ neighbor 10.255.0.22
+  use neighbor-group RR1-CLIENTS
+ neighbor 10.255.0.23
+  use neighbor-group RR1-CLIENTS
+ neighbor 10.255.0.24
+  use neighbor-group RR1-CLIENTS
+ neighbor 10.255.0.31
+  use neighbor-group RR1-CLIENTS

@@ -1,0 +1,52 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — P1
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+mpls label range 1100 1199
+!
+interface Loopback0
+ ip address 10.255.0.11 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address 10.0.0.2 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ ip address 10.0.0.10 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ ip address 10.0.0.17 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+ mpls ip
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ ip address 10.0.0.21 255.255.255.252
+ negotiation auto
+ mpls ip
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ ip address 10.0.0.25 255.255.255.252
+ negotiation auto
+ mpls ip
+ no mop enabled
+ no mop sysid
+!
+router ospf 100
+ router-id 11.11.11.11
+ auto-cost reference-bandwidth 100000
+ passive-interface Loopback0
+ network 0.0.0.0 255.255.255.255 area 0
+ mpls ldp sync
+!
+mpls ldp router-id Loopback0

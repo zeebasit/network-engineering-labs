@@ -1,0 +1,44 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — CE-B2
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface Loopback0
+ ip address 10.255.20.2 255.255.255.255
+!
+interface GigabitEthernet0/0
+ ip address 10.10.20.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.10.20.10 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 65120
+ bgp log-neighbor-changes
+ neighbor 10.10.20.5 remote-as 65000
+ neighbor 10.10.20.9 remote-as 65120
+ address-family ipv4
+  network 10.255.20.2 mask 255.255.255.255
+  neighbor 10.10.20.5 activate
+  neighbor 10.10.20.5 route-map PREFER-R2 in
+  neighbor 10.10.20.5 route-map DN-CEB1 out
+  neighbor 10.10.20.9 activate
+ exit-address-family
+!
+ip prefix-list DN-CEB1-LO seq 10 permit 10.255.20.1/32
+!
+ip prefix-list PREFER-R2-CEB1 seq 10 permit 10.255.20.1/32
+!
+route-map DN-CEB1 deny 10
+ match ip address prefix-list DN-CEB1-LO
+!
+route-map DN-CEB1 permit 20
+!
+route-map PREFER-R2 permit 10
+ match ip address prefix-list PREFER-R2-CEB1
+ set weight 500
+!
+route-map PREFER-R2 permit 20

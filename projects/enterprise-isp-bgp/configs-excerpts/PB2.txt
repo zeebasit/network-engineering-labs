@@ -1,0 +1,88 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — PB2
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+vrf definition CUST-C
+ rd 100:301
+ route-target export 100:30
+ route-target import 100:30
+ address-family ipv4
+ exit-address-family
+!
+mpls label range 12200 12299
+!
+interface Loopback0
+ ip address 10.255.1.12 255.255.255.255
+!
+interface GigabitEthernet1
+ vrf forwarding CUST-C
+ ip address 10.0.1.10 255.255.255.252
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ ip address 10.0.2.2 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ ip address 10.0.2.10 255.255.255.252
+ negotiation auto
+ mpls ip
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ ip address 10.0.2.13 255.255.255.252
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ vrf forwarding CUST-C
+ ip address 10.10.30.5 255.255.255.252
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router ospf 200
+ router-id 112.112.112.112
+ auto-cost reference-bandwidth 100000
+ passive-interface Loopback0
+ network 0.0.0.0 255.255.255.255 area 0
+ mpls ldp sync
+!
+router bgp 65010
+ bgp router-id 10.255.1.12
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.255.1.1 remote-as 65010
+ neighbor 10.255.1.1 update-source Loopback0
+ address-family ipv4
+  neighbor 10.255.1.1 activate
+ exit-address-family
+ address-family vpnv4
+  neighbor 10.255.1.1 activate
+  neighbor 10.255.1.1 send-community extended
+ exit-address-family
+ address-family ipv4 vrf CUST-C
+  neighbor 10.0.1.9 remote-as 65000
+  neighbor 10.0.1.9 activate
+  neighbor 10.0.1.9 route-map CUSTC-ONLY-LO out
+  neighbor 10.10.30.6 remote-as 65130
+  neighbor 10.10.30.6 activate
+  neighbor 10.10.30.6 as-override
+ exit-address-family
+!
+ip prefix-list CUSTC-ONLY seq 10 permit 10.255.30.1/32
+!
+ip prefix-list CUSTC-ONLY seq 20 permit 10.255.30.2/32
+!
+route-map CUSTC-ONLY-LO permit 10
+ match ip address prefix-list CUSTC-ONLY
+!
+route-map CUSTC-ONLY-LO deny 100
+!
+mpls ldp router-id Loopback0

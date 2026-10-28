@@ -1,0 +1,11 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — RS1
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface eth0
+ ip address 10.0.1.14/30
+!
+interface eth1
+ ip address 10.0.1.17/30
+!
+interface lo
+ ip address 10.255.2.10/32

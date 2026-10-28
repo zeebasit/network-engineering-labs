@@ -1,0 +1,32 @@
+! Sanitized, selected excerpts from a historical CML lab snapshot — CE-D2
+! NOT a complete or verified runnable device configuration. All authentication and PKI material omitted.
+!
+interface Loopback0
+ ip address 10.255.40.2 255.255.255.255
+!
+interface Loopback1
+ ip address 10.255.40.100 255.255.255.255
+!
+interface GigabitEthernet0/0
+ ip address 10.10.40.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 65140
+ bgp log-neighbor-changes
+ neighbor 10.10.40.5 remote-as 65000
+ address-family ipv4
+  network 10.255.40.2 mask 255.255.255.255
+  network 10.255.40.100 mask 255.255.255.255
+  neighbor 10.10.40.5 activate
+  neighbor 10.10.40.5 route-map LO1-PREPENDING out
+ exit-address-family
+!
+ip prefix-list LO1-PREPEND seq 10 permit 10.255.40.100/32
+!
+route-map LO1-PREPENDING permit 10
+ match ip address prefix-list LO1-PREPEND
+ set as-path prepend 65140 65140 65140 65140
+!
+route-map LO1-PREPENDING permit 20
